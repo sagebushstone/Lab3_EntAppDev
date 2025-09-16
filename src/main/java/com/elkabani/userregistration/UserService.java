@@ -18,8 +18,9 @@ public class UserService {
             userRepository.save(user);
         }
         else{
-            throw new RuntimeException("A user with that email already exists.");
+            throw new RuntimeException("A user with the email " + user.getEmail() + " already exists.");
         }
+        System.out.println();
         // send a notification to the user
         notificationService.send("The user has been successfully added with the data: " + user.toString(), user.getEmail());
     }
